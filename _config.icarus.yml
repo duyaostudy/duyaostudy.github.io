@@ -1,0 +1,221 @@
+version: 5.1.0
+variant: default
+logo: /img/ice-logo.svg
+head:
+    favicon: /img/ice-favicon.svg
+    manifest:
+        name: 
+        short_name: 
+        start_url: 
+        theme_color: 
+        background_color: 
+        display: standalone
+        icons:
+            -
+                src: ''
+                sizes: ''
+                type: 
+    open_graph:
+        title: 
+        type: blog
+        url: 
+        image: 
+        site_name: 
+        author: 
+        description: 
+        twitter_card: 
+        twitter_id: 
+        twitter_site: 
+        google_plus: 
+        fb_admins: 
+        fb_app_id: 
+    structured_data:
+        title: 
+        description: 
+        url: 
+        author: 
+        publisher: 
+        publisher_logo: 
+        image: 
+    meta:
+        - ''
+    rss: 
+navbar:
+    menu:
+        主页: /
+        文章: /archives
+        类别: /categories
+        标签: /tags
+        关于: /about
+    links:
+        Download on GitHub:
+            icon: fab fa-github
+            url: https://github.com/duyaostudy/hexo-theme-icarus-duyao-duyao
+footer:
+    links:
+        Creative Commons:
+            icon: fab fa-creative-commons
+            url: https://creativecommons.org/
+        Attribution 4.0 International:
+            icon: fab fa-creative-commons-by
+            url: https://creativecommons.org/licenses/by/4.0/
+        Download on GitHub:
+            icon: fab fa-github
+            url: https://github.com/duyaostudy/hexo-theme-icarus-duyao
+article:
+    highlight:
+        theme: atom-one-light
+        clipboard: true
+        fold: unfolded
+    readtime: true
+    update_time: true
+    licenses:
+        Creative Commons:
+            icon: fab fa-creative-commons
+            url: https://creativecommons.org/
+        Attribution:
+            icon: fab fa-creative-commons-by
+            url: https://creativecommons.org/licenses/by/4.0/
+        Noncommercial:
+            icon: fab fa-creative-commons-nc
+            url: https://creativecommons.org/licenses/by-nc/4.0/
+search:
+    type: insight
+    index_pages: true
+# comment:
+#     type: disqus
+#     shortname: ''
+donates:
+    -
+        type: afdian
+        url: ''
+    -
+        type: alipay
+        qrcode: ''
+    -
+        type: buymeacoffee
+        url: ''
+    -
+        type: patreon
+        url: ''
+    # -
+    #     type: paypal
+    #     business: ''
+    #     currency_code: USD
+    -
+        type: wechat
+        qrcode: ''
+# share:
+#     type: sharethis
+#     install_url: ''
+sidebar:
+    left:
+        sticky: false
+    right:
+        sticky: false
+# 配置个人标签栏
+widgets:
+    -
+        position: left
+        type: profile
+        author: duyao
+        author_title: 冰海
+        location: 学习记录学习
+        avatar: /img/avatat.jpg
+        avatar_rounded: false
+        gravatar: 
+        follow_link: https://github.com/duyaostudy
+        social_links:
+            Github:
+                icon: fab fa-github
+                url: https://github.com/duyaostudy
+            Facebook:
+                icon: fab fa-wechat
+                url: https://weixin.com
+            Twitter:
+                icon: fab fa-git
+                url: https://git.com
+            Dribbble:
+                icon: fab fa-qq
+                url: https://qq.com
+            RSS:
+                icon: fas fa-rss
+                url: /
+    -
+    # 左标签下面的小标签
+        position: left
+        type: toc
+        index: true
+        collapsed: true
+        depth: 3
+    -
+        position: left
+        type: links
+        links:
+            百度: https://baidu.com
+    -
+        position: left
+        type: categories
+    -
+        position: right
+        type: recent_posts
+    -
+        position: left
+        type: archives
+    -
+        position: left
+        type: tags
+        order_by: name
+        amount: 
+        show_count: true
+    # -
+    #     position: left
+    #     type: subscribe_email
+    #     description: 
+    #     feedburner_id: ''
+    # -
+    #     position: left
+    #     type: adsense
+    #     client_id: ''
+    #     slot_id: ''
+    # -
+    #     position: left
+    #     type: followit
+    #     description: 
+    #     action_url: ''
+    #     verification_code: ''
+plugins:
+    animejs: true
+    back_to_top: true
+    baidu_analytics:
+        tracking_id: 
+    bing_webmaster:
+        tracking_id: 
+    busuanzi: false
+    cnzz:
+        id: 
+        web_id: 
+    cookie_consent:
+        type: info
+        theme: edgeless
+        static: false
+        position: bottom-left
+        policyLink: https://www.cookiesandyou.com/
+    gallery: true
+    google_analytics:
+        tracking_id: 
+    hotjar:
+        site_id: 
+    katex: false
+    mathjax: false
+    outdated_browser: false
+    progressbar: true
+    statcounter:
+        project: 
+        security: 
+    twitter_conversion_tracking:
+        pixel_id: 
+providers:
+    cdn: jsdelivr
+    fontcdn: google
+    iconcdn: fontawesome
