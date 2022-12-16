@@ -1,9 +1,8 @@
 ---
 title: hello world
-
-tags: myblog
-
-categories: hexo
+tags: blog
+categories: blog
+date: 2022-12-15 10:42:00
 ---
 # IceBlog
 

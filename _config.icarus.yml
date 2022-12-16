@@ -85,26 +85,27 @@ search:
 # comment:
 #     type: disqus
 #     shortname: ''
-donates:
-    -
-        type: afdian
-        url: ''
-    -
-        type: alipay
-        qrcode: ''
-    -
-        type: buymeacoffee
-        url: ''
-    -
-        type: patreon
-        url: ''
-    # -
-    #     type: paypal
-    #     business: ''
-    #     currency_code: USD
-    -
-        type: wechat
-        qrcode: ''
+# 赞赏按钮
+# donates:
+#     -
+#         type: afdian
+#         url: ''
+#     -
+#         type: alipay
+#         qrcode: ''
+#     -
+#         type: buymeacoffee
+#         url: ''
+#     -
+#         type: patreon
+#         url: ''
+#     -
+#         type: paypal
+#         business: ''
+#         currency_code: USD
+#     -
+#         type: wechat
+#         qrcode: ''
 # share:
 #     type: sharethis
 #     install_url: ''
@@ -112,9 +113,16 @@ sidebar:
     left:
         sticky: false
     right:
-        sticky: false
-# 配置个人标签栏
+        sticky: true
+# 配置标签栏
 widgets:
+    # 目录栏
+    -
+        position: right
+        type: toc
+        index: true
+        collapsed: true
+        depth: 3
     -
         position: left
         type: profile
@@ -122,42 +130,28 @@ widgets:
         author_title: 冰海
         location: 学习记录学习
         avatar: /img/avatat.jpg
-        avatar_rounded: false
+        avatar_rounded: true
         gravatar: 
         follow_link: https://github.com/duyaostudy
         social_links:
             Github:
                 icon: fab fa-github
                 url: https://github.com/duyaostudy
-            Facebook:
+            微信:
                 icon: fab fa-wechat
                 url: https://weixin.com
-            Twitter:
+            git:
                 icon: fab fa-git
-                url: https://git.com
-            Dribbble:
+                url: https://gitee.com
+            qq:
                 icon: fab fa-qq
                 url: https://qq.com
             RSS:
                 icon: fas fa-rss
                 url: /
-    -
-    # 左标签下面的小标签
-        position: left
-        type: toc
-        index: true
-        collapsed: true
-        depth: 3
+    # 最新文章
     -
         position: left
-        type: links
-        links:
-            百度: https://baidu.com
-    -
-        position: left
-        type: categories
-    -
-        position: right
         type: recent_posts
     -
         position: left
@@ -168,6 +162,14 @@ widgets:
         order_by: name
         amount: 
         show_count: true
+    -
+        position: left
+        type: categories
+    -
+        position: left
+        type: links
+        links:
+            百度: https://baidu.com
     # -
     #     position: left
     #     type: subscribe_email
