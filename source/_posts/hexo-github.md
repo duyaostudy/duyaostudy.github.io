@@ -4,6 +4,7 @@ tags: [github, hexo, blog]
 categories: blog
 date: 2022-12-16 10:42:00
 toc: true
+thumbnail: /2022/12/16/hexo-github/banner.png
 ---
 # 前置需要
 
@@ -18,6 +19,8 @@ windows: [git](https://git-scm.com/download/win)
 官方平台安装：[Node.js](https://nodejs.org/en/download/)
 
 > 版本仅供参考
+
+<!--more-->
 
 # 搭建流程
 
@@ -81,8 +84,8 @@ author: 你的名字
 language: 使用的语言
 timezone: 时区
 
-url: http://username.github.io
-
+> url: http://username.github.io
+>
 > url改为你的github名称地址，如果有子目录在地址后添加子目录名称
 
 theme: 主题名
@@ -145,7 +148,7 @@ deploy:
 
 可以将生成文件下的public文件直接push到自己仓库，也可以访问
 
-**访问 https://username.github.io就可以查看自己的blog了**
+> **访问https://username.github.io就可以查看自己的blog了**
 
 **主题**
 

@@ -50,7 +50,7 @@ navbar:
     links:
         Download on GitHub:
             icon: fab fa-github
-            url: https://github.com/duyaostudy/hexo-theme-icarus-duyao-duyao
+            url: https://github.com/duyaostudy/duyaostudy.github.io
 footer:
     links:
         Creative Commons:
@@ -61,13 +61,15 @@ footer:
             url: https://creativecommons.org/licenses/by/4.0/
         Download on GitHub:
             icon: fab fa-github
-            url: https://github.com/duyaostudy/hexo-theme-icarus-duyao
+            url: https://github.com/duyaostudy/duyaostudy.github.io
+# 文章设置
 article:
     highlight:
         theme: atom-one-light
         clipboard: true
         fold: unfolded
     readtime: true
+    thumbnail: true
     update_time: true
     licenses:
         Creative Commons:
@@ -128,7 +130,7 @@ widgets:
         type: profile
         author: duyao
         author_title: 冰海
-        location: 学习记录学习
+        location: 日落西山，冬去春来，尘埃落定
         avatar: /img/avatat.jpg
         avatar_rounded: true
         gravatar: 

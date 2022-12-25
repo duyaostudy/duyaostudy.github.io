@@ -40,18 +40,22 @@ external_link:
   exclude: ''
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
+# markdown图片问题
+marked:
+  prependRoot: true
+  postAsset: true
 relative_link: false
 future: true
 highlight:
-  enable: false
+  enable: true
   line_number: true
   auto_detect: false
   tab_replace: ''
   wrap: true
   hljs: false
 prismjs:
-  enable: true
+  enable: false
   preprocess: false
   line_number: true
   tab_replace: ''
@@ -98,6 +102,19 @@ ignore:
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 theme: icarus
+
+#评论
+valine:
+  enable: true
+  appId: rUynM1N9mUjwMa8p89swELOq-gzGzoHsz
+  appKey: pYfSOEXxy7xfgXpYor2hhS2V
+  notify: false
+  verify: false
+  visitor: true
+  avatar: 'mp' # Gravatar style : mp/identicon/monsterid/wavatar/retro/hide
+  pageSize: 10
+  placeholder: '给文章加点建议' # Comment Box placeholder
+  # background: /medias/comment_bg.png
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
