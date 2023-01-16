@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>login - 冰海</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="冰海"><meta name="msapplication-TileImage" content="/img/ice-favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="冰海"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="单一服务模式 登录使用session对象实现 登录成功后，把用户数据放到session中 判断是否登录，从session中获取数据，可以获取到登录  具有局限性，只能在一台服务器上实现，单点性能压力大，无法扩展"><meta property="og:type" content="blog"><meta property="og:title" content="login"><meta property="og:url" content="http://duyaostudy.github.io/2022/12/25/login/"><meta property="og:site_name" content="冰海"><meta property="og:description" content="单一服务模式 登录使用session对象实现 登录成功后，把用户数据放到session中 判断是否登录，从session中获取数据，可以获取到登录  具有局限性，只能在一台服务器上实现，单点性能压力大，无法扩展"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="http://duyaostudy.github.io/img/og_image.png"><meta property="article:published_time" content="2022-12-25T14:22:43.000Z"><meta property="article:modified_time" content="2023-01-09T06:39:56.025Z"><meta property="article:author" content="duyao"><meta property="article:tag" content="业务"><meta property="article:tag" content="登录"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="http://duyaostudy.github.io/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://duyaostudy.github.io/2022/12/25/login/"},"headline":"login","image":["http://duyaostudy.github.io/img/og_image.png"],"datePublished":"2022-12-25T14:22:43.000Z","dateModified":"2023-01-09T06:39:56.025Z","author":{"@type":"Person","name":"duyao"},"publisher":{"@type":"Organization","name":"冰海","logo":{"@type":"ImageObject","url":"http://duyaostudy.github.io/img/ice-logo.svg"}},"description":"单一服务模式 登录使用session对象实现 登录成功后，把用户数据放到session中 判断是否登录，从session中获取数据，可以获取到登录  具有局限性，只能在一台服务器上实现，单点性能压力大，无法扩展"}</script><link rel="canonical" href="http://duyaostudy.github.io/2022/12/25/login/"><link rel="icon" href="/img/ice-favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>redis基础 - 冰海</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="冰海"><meta name="msapplication-TileImage" content="/img/ice-favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="冰海"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="redis基本类型 字符串（String）  常用方法  哈希（Hash） 列表（List） 集合（Set） 有序集合（sorted set）"><meta property="og:type" content="blog"><meta property="og:title" content="redis基础"><meta property="og:url" content="http://duyaostudy.github.io/2023/01/04/redis%E5%9F%BA%E7%A1%80/"><meta property="og:site_name" content="冰海"><meta property="og:description" content="redis基本类型 字符串（String）  常用方法  哈希（Hash） 列表（List） 集合（Set） 有序集合（sorted set）"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="http://duyaostudy.github.io/1669866150936.png"><meta property="og:image" content="http://duyaostudy.github.io/1669866185569.png"><meta property="og:image" content="http://duyaostudy.github.io/1669866680336.png"><meta property="og:image" content="http://duyaostudy.github.io/1669866696543.png"><meta property="article:published_time" content="2023-01-04T05:30:44.000Z"><meta property="article:modified_time" content="2023-01-16T09:34:57.966Z"><meta property="article:author" content="duyao"><meta property="article:tag" content="redis"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="http://duyaostudy.github.io/1669866150936.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://duyaostudy.github.io/2023/01/04/redis%E5%9F%BA%E7%A1%80/"},"headline":"redis基础","image":["http://duyaostudy.github.io/1669866150936.png","http://duyaostudy.github.io/1669866185569.png","http://duyaostudy.github.io/1669866680336.png","http://duyaostudy.github.io/1669866696543.png"],"datePublished":"2023-01-04T05:30:44.000Z","dateModified":"2023-01-16T09:34:57.966Z","author":{"@type":"Person","name":"duyao"},"publisher":{"@type":"Organization","name":"冰海","logo":{"@type":"ImageObject","url":"http://duyaostudy.github.io/img/ice-logo.svg"}},"description":"redis基本类型 字符串（String）  常用方法  哈希（Hash） 列表（List） 集合（Set） 有序集合（sorted set）"}</script><link rel="canonical" href="http://duyaostudy.github.io/2023/01/04/redis%E5%9F%BA%E7%A1%80/"><link rel="icon" href="/img/ice-favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
   (function () {
       function switchTab() {
           if (!location.hash) {
@@ -29,60 +29,54 @@
       switchTab();
       window.addEventListener('hashchange', switchTab, false);
   })();
-  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/ice-logo.svg" alt="冰海" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives">文章</a><a class="navbar-item" href="/categories">类别</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/about">关于</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/duyaostudy/duyaostudy.github.io"><i class="fab fa-github"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2022-12-25T14:22:43.000Z" title="2022/12/25 22:22:43">2022-12-25</time>发表</span><span class="level-item"><time dateTime="2023-01-09T06:39:56.025Z" title="2023/1/9 14:39:56">2023-01-09</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a><span> / </span><a class="link-muted" href="/categories/%E5%90%8E%E7%AB%AF/%E4%B8%9A%E5%8A%A1/">业务</a></span><span class="level-item">2 分钟读完 (大约330个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">login</h1><div class="content"><h2 id="单一服务模式-登录"><a href="#单一服务模式-登录" class="headerlink" title="单一服务模式 登录"></a>单一服务模式 登录</h2><h3 id="使用session对象实现"><a href="#使用session对象实现" class="headerlink" title="使用session对象实现"></a>使用session对象实现</h3><ul>
-<li>登录成功后，把用户数据放到session中</li>
-<li>判断是否登录，从session中获取数据，可以获取到登录</li>
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/ice-logo.svg" alt="冰海" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives">文章</a><a class="navbar-item" href="/categories">类别</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/about">关于</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/duyaostudy/duyaostudy.github.io"><i class="fab fa-github"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-01-04T05:30:44.000Z" title="2023/1/4 13:30:44">2023-01-04</time>发表</span><span class="level-item"><time dateTime="2023-01-16T09:34:57.966Z" title="2023/1/16 17:34:57">2023-01-16</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><span> / </span><a class="link-muted" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/redis/">redis</a></span><span class="level-item">3 分钟读完 (大约456个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">redis基础</h1><div class="content"><h1 id="redis基本类型"><a href="#redis基本类型" class="headerlink" title="redis基本类型"></a>redis基本类型</h1><ul>
+<li>字符串（String）</li>
 </ul>
-<p>具有局限性，只能在一台服务器上实现，单点性能压力大，无法扩展</p>
+<p>常用方法</p>
+<ul>
+<li>哈希（Hash）</li>
+<li>列表（List）</li>
+<li>集合（Set）</li>
+<li>有序集合（sorted set）</li>
+</ul>
 <span id="more"></span>
 
-<h2 id="单点登录模式-（SSO模式）"><a href="#单点登录模式-（SSO模式）" class="headerlink" title="单点登录模式 （SSO模式）"></a>单点登录模式 （SSO模式）</h2><ul>
-<li>session广播机制实现<ul>
-<li>session复制到其他模块中，实现登录机制</li>
-</ul>
-</li>
-<li>cookie + redis实现<ul>
-<li>登录后数据放入两个地方<ul>
-<li>cookie：redis生成的key放入cookie</li>
-<li>redis：key:生成唯一随机值，value:用户数据</li>
-</ul>
-</li>
-<li>实现原理<ul>
-<li>浏览器发送请求带着cookie进行发送，获取cookie,拿着cookie去redis根据key查询，查到数据登录</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>token实现<ul>
-<li>按照一定规程生成一个字符串，一般拥有用户信息<ul>
-<li>一般使用base64加密</li>
-</ul>
-</li>
-<li>生成字符串后将字符串返回<ul>
-<li>可以使用cookie和地址栏进行传输</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="JWT-工具"><a href="#JWT-工具" class="headerlink" title="JWT 工具"></a>JWT 工具</h2><p>自包含令牌</p>
-<p>使用jwt规则生成字符串</p>
-<p>JWT包含三部分</p>
+<h1 id="可能存在的问题"><a href="#可能存在的问题" class="headerlink" title="可能存在的问题"></a>可能存在的问题</h1><h2 id="缓存穿透"><a href="#缓存穿透" class="headerlink" title="缓存穿透"></a>缓存穿透</h2><p>数据库和缓存当中都不存在此数据，缓存不会生效，请求都会发送到数据库中</p>
+<p>解决方法：</p>
 <ul>
-<li>jwt头信息<ul>
-<li>描述jwt元数据的json对象</li>
-</ul>
-</li>
-<li>有效载荷<ul>
-<li>包含主体信息（用户信息）</li>
-</ul>
-</li>
-<li>签名哈希 防伪标志<ul>
-<li>判定是否由我们规则生成字符串</li>
+<li>缓存空对象<ul>
+<li>在redis中缓存数据库不存在的数据，当查询缓存当中不存在的时候直接返回空<ul>
+<li>优点：实现简单，维护方便</li>
+<li>缺点：额外的内存消耗，可能造成短期的不一致</li>
+<li>适合命中不高，但可能被频繁更新的数据<br><img src="/1669866150936.png" alt="img"></li>
 </ul>
 </li>
 </ul>
-</div><div class="article-licensing box"><div class="licensing-title"><p>login</p><p><a href="http://duyaostudy.github.io/2022/12/25/login/">http://duyaostudy.github.io/2022/12/25/login/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>duyao</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2022-12-25</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2023-01-09</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/%E4%B8%9A%E5%8A%A1/">业务</a><a class="link-muted mr-2" rel="tag" href="/tags/%E7%99%BB%E5%BD%95/">登录</a></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2022/12/25/mybatis/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">Mybatis基础</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2022/12/25/covid-record/"><span class="level-item">新冠冤种</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div class="content" id="valine-thread"></div><script src="//cdn.jsdelivr.net/npm/leancloud-storage@3/dist/av-min.js"></script><script src="https://cdn.jsdelivr.net/npm/valine@1.4.16/dist/Valine.min.js"></script><script>new Valine({
+</li>
+<li>布隆过滤<ul>
+<li>优点：内存占用较少，没有多余key</li>
+<li>缺点：实现复杂，存在误判可能</li>
+<li><strong>适合命中不高，但是更新不频繁的数据</strong><br><img src="/1669866185569.png" alt="img"></li>
+</ul>
+</li>
+</ul>
+<h2 id="缓存雪崩"><a href="#缓存雪崩" class="headerlink" title="缓存雪崩"></a>缓存雪崩</h2><p>缓存雪崩是指在同一时段大量的缓存key同时失效或者Redis服务宕机，导致大量请求到达数据库，带来巨大压力。</p>
+<p>解决方案：</p>
+<ul>
+<li>给不同的Key的TTL添加随机值<ul>
+<li>利用Redis集群提高服务的可用性</li>
+<li>给缓存业务添加降级限流策略</li>
+<li>给业务添加多级缓存</li>
+</ul>
+</li>
+</ul>
+<h2 id="缓存击穿"><a href="#缓存击穿" class="headerlink" title="缓存击穿"></a>缓存击穿</h2><p>在高并发的情景下，缓存重建业务较复杂的key突然失效了，会突然给数据库添加很大的压力。多线程情况下，突然有着很多请求请求到了缓存中没有的数据，去数据库访问然后再redis上面重建值请求过多导致失效，给数据库带了很大的压力。</p>
+<ul>
+<li>互斥锁<br><img src="/1669866680336.png" alt="img"></li>
+<li>逻辑过期<br><img src="/1669866696543.png"></li>
+</ul>
+<!--TO-->
+</div><div class="article-licensing box"><div class="licensing-title"><p>redis基础</p><p><a href="http://duyaostudy.github.io/2023/01/04/redis基础/">http://duyaostudy.github.io/2023/01/04/redis基础/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>duyao</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2023-01-04</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2023-01-16</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/redis/">redis</a></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2023/01/10/fegin%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">feign服务发现</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2022/12/25/mybatis/"><span class="level-item">Mybatis基础</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div class="content" id="valine-thread"></div><script src="//cdn.jsdelivr.net/npm/leancloud-storage@3/dist/av-min.js"></script><script src="https://cdn.jsdelivr.net/npm/valine@1.4.16/dist/Valine.min.js"></script><script>new Valine({
             el: '#valine-thread',
             appId: "rUynM1N9mUjwMa8p89swELOq-gzGzoHsz",
             appKey: "pYfSOEXxy7xfgXpYor2hhS2V",
