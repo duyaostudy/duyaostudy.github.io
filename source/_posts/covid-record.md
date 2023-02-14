@@ -1,7 +1,7 @@
 ---
 title: 新冠冤种
 date: 2022-12-25 13:20:08
-tags: [疫情,新冠]
+tags: [疫情]
 categories: 日常
 typora-root-url: covid-record
 ---

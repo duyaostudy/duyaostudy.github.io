@@ -103,18 +103,18 @@ ignore:
 ## Themes: https://hexo.io/themes/
 theme: icarus
 
-#评论
-valine:
-  enable: true
-  appId: rUynM1N9mUjwMa8p89swELOq-gzGzoHsz
-  appKey: pYfSOEXxy7xfgXpYor2hhS2V
-  notify: false
-  verify: false
-  visitor: true
-  avatar: 'mp' # Gravatar style : mp/identicon/monsterid/wavatar/retro/hide
-  pageSize: 10
-  placeholder: '给文章加点建议' # Comment Box placeholder
-  # background: /medias/comment_bg.png
+# #评论
+# valine:
+#   enable: true
+#   appId: rUynM1N9mUjwMa8p89swELOq-gzGzoHsz
+#   appKey: pYfSOEXxy7xfgXpYor2hhS2V
+#   notify: false
+#   verify: false
+#   visitor: true
+#   avatar: 'mp' # Gravatar style : mp/identicon/monsterid/wavatar/retro/hide
+#   pageSize: 10
+#   placeholder: '给文章加点建议' # Comment Box placeholder
+#   # background: /medias/comment_bg.png
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
